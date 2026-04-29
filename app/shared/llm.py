@@ -1,5 +1,23 @@
 import asyncio
+import httpx
+from app.core.config import settings
 
 async def runLLM(prompt: str) -> str:
-    await asyncio.sleep(0.2)
-    return f"[AI simulated output for prompt: {prompt[:50]}...]"
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        response = await client.post(
+            "https://api.openai.com/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {settings.OPENAI_API_KEY}",
+                "Content-Type": "application/json"
+            },
+            json={
+                "model": "gpt-4o-mini",
+                "messages": [
+                    {"role": "system", "content": "You are an AI assistant for customer support analysis."},
+                    {"role": "user", "content": prompt}
+                ],
+                "max_tokens": 200
+            }
+        )
+        data = response.json()
+        return data["choices"][0]["message"]["content"]
