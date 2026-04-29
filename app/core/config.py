@@ -1,4 +1,4 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     ZENDESK_SUBDOMAIN: str = "your_subdomain"
