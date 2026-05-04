@@ -1,0 +1,36 @@
+{
+  "name": "SupportOps AI — Ticket Intelligence",
+  "id": "supportops-ticket-intelligence",
+  "author": {
+    "name": "SupportOps AI Suite",
+    "email": "support@supportops.ai",
+    "url": "https://supportops.ai"
+  },
+  "defaultLocale": "en",
+  "private": false,
+  "version": "1.0.0",
+  "frameworkVersion": "2.0",
+  "location": {
+    "support": {
+      "ticket_sidebar": {
+        "url": "{{setting.app_url}}",
+        "size": { "height": "620px" }
+      }
+    }
+  },
+  "parameters": [
+    {
+      "name": "app_url",
+      "type": "text",
+      "required": true,
+      "secure": false,
+      "default": "https://your-engine.railway.app"
+    },
+    {
+      "name": "api_key",
+      "type": "text",
+      "required": false,
+      "secure": true
+    }
+  ]
+}
