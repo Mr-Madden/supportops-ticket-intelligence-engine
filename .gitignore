@@ -37,3 +37,5 @@ Thumbs.db
 
 # Alembic
 alembic/versions/*.pyc
+sidebar-app/node_modules/
+dashboard/node_modules/
